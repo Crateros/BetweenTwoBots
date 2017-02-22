@@ -88,7 +88,7 @@ class TweetBot:
         messageTwo = self.model.make_short_sentence(140)
         try:
             self.api.update_status('@' + toReply + " " + message)
-            self.api.update_status(message)
+            self.api.update_status(messageTwo)
 
         except tweepy.TweepError as error:
             print(error.reason)
