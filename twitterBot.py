@@ -8,19 +8,14 @@ from time import sleep
 from tweepy.streaming import StreamListener
 from tweepy import Stream
 
-
 CONSUMER_KEY = keys['CONSUMER_KEY']
 CONSUMER_SECRET = keys['CONSUMER_SECRET']
 ACCESS_TOKEN = keys['ACCESS_TOKEN']
 ACCESS_TOKEN_SECRET = keys['ACCESS_TOKEN_SECRET']
 
-# with open("botfood.txt") as botfood_file:
-#     botfood = botfood_file.read()
-# model = markovify.Text(botfood)
 oldtext = []
 back = []
 backtext = []
-
 
 class POSifiedText(markovify.Text):
     def word_split(self, sentence):
@@ -32,8 +27,6 @@ class POSifiedText(markovify.Text):
     def word_join(self, words):
         sentence = " ".join(word.split("::")[0] for word in words)
         return sentence
-
-# POSifiedText(model.make_short_sentence(140))
 
 class TweetBot:
 
