@@ -6,12 +6,12 @@
 
 <form action="/startbot" method="POST">
   {% csrf_token %}
-    <input type="submit" name="startBot" value="Submit">
+    <input type="submit" name="startBot" value="Start Bot">
 </form>
 
-<form action="/stoptbot" method="POST">
+<form action="/stopbot" method="POST">
   {% csrf_token %}
-    <input type="submit" name="stopBot" value="Submit">
+    <input type="submit" name="stopBot" value="Stop Bot">
 </form>
 
 <p>Bots Expressing Themselves</p>

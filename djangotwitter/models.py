@@ -8,3 +8,9 @@ class TextFood(models.Model):
     def __str__(self):
         return self.food
         return self.name
+
+class Toggled(models.Model):
+    onstatus = models.BooleanField(default = False)
+
+    def __str__(self):
+        return self.on
