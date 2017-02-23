@@ -3,6 +3,7 @@ import threading
 import markovify
 import nltk
 import re
+import os
 from time import sleep
 from tweepy.streaming import StreamListener
 from tweepy import Stream
