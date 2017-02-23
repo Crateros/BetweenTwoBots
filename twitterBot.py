@@ -3,15 +3,15 @@ import threading
 import markovify
 import nltk
 import re
-# from env import keys
+from env import keys
 from time import sleep
 from tweepy.streaming import StreamListener
 from tweepy import Stream
 
-# CONSUMER_KEY = keys['CONSUMER_KEY']
-# CONSUMER_SECRET = keys['CONSUMER_SECRET']
-# ACCESS_TOKEN = keys['ACCESS_TOKEN']
-# ACCESS_TOKEN_SECRET = keys['ACCESS_TOKEN_SECRET']
+CONSUMER_KEY = keys['CONSUMER_KEY']
+CONSUMER_SECRET = keys['CONSUMER_SECRET']
+ACCESS_TOKEN = keys['ACCESS_TOKEN']
+ACCESS_TOKEN_SECRET = keys['ACCESS_TOKEN_SECRET']
 
 oldtext = []
 back = []
