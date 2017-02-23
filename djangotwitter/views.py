@@ -17,3 +17,6 @@ def startbot(reqest):
 def stopbot(request):
     djangotwitter.singleton.proc.kill()
     return redirect('index')
+
+def about(request):
+    return render(request, 'djangotwitter/about.html')
