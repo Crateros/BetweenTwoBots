@@ -4,6 +4,7 @@ decorator==4.0.11
 dj-database-url==0.4.2
 Django==1.10.5
 Flask==0.12
+gunicorn==19.6.0
 ipython==5.2.2
 ipython-genutils==0.1.0
 itsdangerous==0.24
