@@ -14,11 +14,13 @@ def index(request):
 def startbot(reqest):
     #djangotwitter.singleton.proc = subprocess.Popen([sys.executable, '/home/donne/WDI/Week 12/djangotwittersite/twitterBot.py'])
     djangotwitter.singleton.proc = subprocess.Popen([sys.executable, 'twitterBot.py'])
+    Toggled.objects.filter(id=1).update(onstatus = True)
     # print(djangotwitter.singleton.proc)
     return redirect('index')
 
 def stopbot(request):
     djangotwitter.singleton.proc.kill()
+    Toggled.objects.filter(id=1).update(onstatus = False)
     return redirect('index')
 
 def update(request):
