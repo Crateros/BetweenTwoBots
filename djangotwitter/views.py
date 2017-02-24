@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 import subprocess
 import sys
 import djangotwitter.singleton
-from .models import TextFood
+from .models import TextFood, Toggled
 
 # Create your views here.
 def index(request):
