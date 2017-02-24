@@ -6,8 +6,16 @@
         <div class="navbar-inverse side-collapse in">
             <nav role="navigation" class="navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{% url 'index' %}">Bots</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li id="status">
+                        {% for status in botstatus %}
+                          {% if status.onstatus %}
+                            <p class="svenBot">Sven Dellstrom is ON <img class="statuslight" src="../static/images/green.svg"></p>
+                          {% else %}
+                            <p class="svenBot">Sven Dellstrom is OFF <img class="statuslight" src="../static/images/red.png"></p>
+                          {% endif %}
+                        {% endfor %}
+                    </li>
+                    <li id="toby"><a href="http://mrdrbot.herokuapp.com/">MdrBot on Heroku</a></li>
                 </ul>
             </nav>
         </div>

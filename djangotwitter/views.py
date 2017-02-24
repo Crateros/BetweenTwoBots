@@ -7,7 +7,8 @@ from .models import TextFood, Toggled
 # Create your views here.
 def index(request):
     context = {
-        "textfoods": TextFood.objects.values('id', 'name')
+        "textfoods": TextFood.objects.values('id', 'name'),
+        "botstatus": Toggled.objects.values('id', 'onstatus')
     }
     return render(request, 'djangotwitter/index.html', context)
 

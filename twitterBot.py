@@ -4,9 +4,15 @@ import markovify
 import nltk
 import re
 import os
+from env import keys
 from time import sleep
 from tweepy.streaming import StreamListener
 from tweepy import Stream
+
+CONSUMER_KEY = keys['CONSUMER_KEY']
+CONSUMER_SECRET = keys['CONSUMER_SECRET']
+ACCESS_TOKEN = keys['ACCESS_TOKEN']
+ACCESS_TOKEN_SECRET = keys['ACCESS_TOKEN_SECRET']
 
 oldtext = []
 back = []
@@ -30,8 +36,8 @@ class TweetBot:
         self.load_botfood(botfood)
 
         #initialize Twitter authorization with tweepy
-        auth = tweepy.OAuthHandler(os.environ.get("CONSUMER_KEY"), os.environ.get("CONSUMER_SECRET"))
-        auth.set_access_token(os.environ.get("ACCESS_TOKEN"), os.environ.get("ACCESS_TOKEN_SECRET"))
+        auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+        auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
         self.api = tweepy.API(auth)
 
     def load_botfood(self, botfood):
@@ -51,17 +57,19 @@ class TweetBot:
                     back.insert(0, tweet.user.screen_name)
 
     def timeline(self):
+        print("in timeline!")
         public_tweets = self.api.home_timeline()
-        with open("botfood.txt", 'r') as botfood_file:
-            botfood = botfood_file.read()
-            model = markovify.Text(botfood)
         with open ("botfood.txt", "a") as botfood_file:
             for tweet in public_tweets:
-                # print(tweet.user.screen_name, tweet.text)
+                print(tweet.user.screen_name, tweet.text)
                 if tweet.user.screen_name != "sven_dellstrom":
+                    print("SCREEN NAME!: ", tweet.user.screen_name)
                     if tweet.text not in oldtext:
+                        print("NOT IN OLD TEXT: ", oldtext)
                         if tweet.text not in backtext:
+                            print("NOT IN BACK TEXT: ", tweet.text)
                             if "sven_dellstrom" in tweet.text.lower() or "sven dellstrom" in tweet.text.lower():
+                                print("IN TIMELINE!: ", tweet.text)
                                 toReply = tweet.user.screen_name
                                 self.tweet(toReply)
                                 oldtext.insert(0, tweet.text)
@@ -70,14 +78,19 @@ class TweetBot:
                                 botfood_file.write(tobeinserted + "\n")
                                 if len(oldtext) > 15:
                                     oldtext.pop()
+        messageTwo = self.model.make_short_sentence(140)
+        self.api.update_status(messageTwo)
 
     def tweet(self, toReply):
         #generate Markov tweet & send it
         message = self.model.make_short_sentence(120)
-        messageTwo = self.model.make_short_sentence(140)
+        print("message: ", message)
+        # messageTwo = self.model.make_short_sentence(140)
+        # print("message two: ", messageTwo)
         try:
+            print(message)
             self.api.update_status('@' + toReply + " " + message)
-            self.api.update_status(messageTwo)
+            # self.api.update_status(messageTwo)
 
         except tweepy.TweepError as error:
             print(error.reason)
