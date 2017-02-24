@@ -14,6 +14,19 @@
     <input type="submit" name="stopBot" value="Stop Bot">
 </form>
 
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Bot Content
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    {% for textfood in textfoods %}
+      <a class="dropdown-item" href="/update?content={{textfood.name}}" value="{{textfood.name}}">{{textfood.name}}</a>
+      <br>
+    {% endfor %}
+  </div>
+</div>
+
 <p>Bots Expressing Themselves</p>
 <div class="row">
   <div class="tweet col-xs-4 col-xs-offset-1">

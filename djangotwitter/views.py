@@ -2,10 +2,14 @@ from django.shortcuts import render, redirect
 import subprocess
 import sys
 import djangotwitter.singleton
+from .models import TextFood
 
 # Create your views here.
 def index(request):
-    return render(request, 'djangotwitter/index.html')
+    context = {
+        "textfoods": TextFood.objects.values('id', 'name')
+    }
+    return render(request, 'djangotwitter/index.html', context)
 
 def startbot(reqest):
     #djangotwitter.singleton.proc = subprocess.Popen([sys.executable, '/home/donne/WDI/Week 12/djangotwittersite/twitterBot.py'])
@@ -15,6 +19,29 @@ def startbot(reqest):
 
 def stopbot(request):
     djangotwitter.singleton.proc.kill()
+    return redirect('index')
+
+def update(request):
+    request.GET['content']
+    print("This is user selection: ", request.GET['content'])
+
+    with open('botfood.txt', 'r') as botfood:
+        first_line = botfood.readline().rstrip()
+        leftover_text = botfood.read()
+        whole_text = first_line + '\n' + leftover_text
+
+        print("This is current botfood.txt: ", first_line)
+
+    TextFood.objects.filter(name=first_line).update(food = whole_text)
+
+    to_be_loaded = TextFood.objects.filter(name = request.GET['content'])
+
+    for loaded in to_be_loaded:
+        freshBotFood = loaded.food
+
+    with open('botfood.txt', 'w') as botfood:
+        botfood.write(freshBotFood)
+
     return redirect('index')
 
 def about(request):
