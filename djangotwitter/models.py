@@ -13,4 +13,4 @@ class Toggled(models.Model):
     onstatus = models.BooleanField(default = False)
 
     def __str__(self):
-        return self.on
+        return self.onstatus
