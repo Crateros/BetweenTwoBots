@@ -12,5 +12,5 @@ class TextFood(models.Model):
 class Toggled(models.Model):
     onstatus = models.BooleanField(default = False)
 
-    def __str__(self):
+    def __bool__(self):
         return self.onstatus
