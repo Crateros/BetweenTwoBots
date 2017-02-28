@@ -4,7 +4,7 @@
 
 <!-- Trigger the modal with a button -->
 <div id="modal">
-    <button type="button" class="btn" data-toggle="modal" data-target="#myModal">About</button>
+    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">About</button>
 
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
@@ -67,7 +67,6 @@
         </form>
     {% endif %}
 {% endfor %}
-</div>
 
     <div class="svenBot">Sven Dellstrom Pontificates</div>
     <div class="row">
@@ -84,7 +83,9 @@
 
 <hr>
 
-<p style="text-align: center; font-size: 1.5em;">Bots Conversing</p>
+<div class="conversing">
+    <p style="text-align: center; font-size: 1.5em;">Bots Conversing</p>
+</div>
 <div class="well" id="conversation-well">
     <div class="row">
         <div class="tweet col-xs-4 col-xs-offset-1">
