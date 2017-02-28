@@ -9,9 +9,9 @@
                     <li id="status">
                         {% for status in botstatus %}
                           {% if status.onstatus %}
-                            <p class="svenBot">Sven Dellstrom is ON <img class="statuslight" src="../static/images/green.svg"></p>
+                            <p class="svenBot">Sven Dellstrom is tweeting <img class="statuslight" src="../static/images/green.svg"></p>
                           {% else %}
-                            <p class="svenBot">Sven Dellstrom is OFF <img class="statuslight" src="../static/images/red.png"></p>
+                            <p class="svenBot">Sven Dellstrom is sleeping <img class="statuslight" src="../static/images/red.png"></p>
                           {% endif %}
                         {% endfor %}
                     </li>

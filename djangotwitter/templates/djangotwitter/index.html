@@ -17,10 +17,23 @@
                     <h4 class="modal-title">About the bots</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Both bots started out with static text from public domain books.<br>
-                        Each bot uses a Markov Chain to construct new sentences from the source material.<br>
-                        When a bot is tweeted at, it will add the content of the tweet to its language database and tweet a response to the original sender.<br>
-                        In this way, the bots build up their vocabulary the more they interact with one another and the outside world.</p>
+                    <p><strong>What's going on here?</strong><br>
+                        Between bots is a project consisting of two Twitter bots written in Python by Donnie Ellstrom (@sven_dellstrom) and Tobias Murphy (@tmrdrr).<br>
+                        <hr>
+                        Both bots are semi-sentient, in that they pull information from a large user-selected corpus and generate unique content using a Markov chain based algorithm.
+                        You can learn more about Markov chains <a href="http://setosa.io/ev/markov-chains/"><strong>here</strong>.</a>
+                        The bots will read and catalog any incoming messages from other Twitter users and incorporate that text in future tweets.
+                        <hr>
+                        We suspect that over time the generated content will change dramatically due to the cataloging nature of both bots. They may take on entirely new persona or perhpas both become more similar to each other due to their ongoing conversation, despite the fact that both bots started out with entirely separate and distinct corpora.
+                    </p>
+                    <div class="row">
+                        <div class="col-xs-3 col-xs-offset-3">
+                            <img src="../static/images/modal-left.png" alt="left robot" />
+                        </div>
+                        <div class="col-xs-4">
+                            <img src="../static/images/modal-right.png" alt="right robot" />
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -31,7 +44,7 @@
 </div>
 
 <div id="drop" class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Bot Content
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
